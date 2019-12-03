@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+<div class="form-con">
+    <form action="/deals/holiday/<%=deal._id%>?_method=PUT" method="POST">
+        <input class="text-form acc" type="text" name="postcard[location]" value="<%=deal.location%>">
+        <input class="text-form acc" type="text" name="postcard[price]" value="<%=deal.price%>">
+        <input class="text-form acc" type="text" name="postcard[flight]" value="<%=deal.flight%>">
+        <input class="text-form acc" type="text" name="postcard[hotel]" value="<%=deal.hotel%>">
+        <input class="text-form acc" type="text" name="postcard[image]" value="<%=deal.image%>">
+        <input class="text-form acc" type="text" name="postcard[nights]" placeholder="Amount of nights">
+        <textarea class="text-form acc" name="postcard[desc]" cols="30" rows="10"><%=deal.desc%></textarea>
+        <input class="g-btn form-btn" type="submit" value="Edit">
+    </form>
+    <form action="/deals/holiday/<%= deal._id %>?_method=DELETE" method="POST">
+        <input class="g-btn form-btn" type="submit" value="Delete">
+    </form>
+</div>
+
+<% include ./partials/footer %>

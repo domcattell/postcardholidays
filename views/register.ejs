@@ -1,0 +1,13 @@
+<% include ./partials/header %>
+
+<div class="form-con">
+    <form action="/register" method="POST">
+        <h1>Sign up</h1>
+        <input class="text-form acc" type="text" name="username" placeholder="User">
+        <input class="text-form acc" type="password" name="password" placeholder="Password">
+        <input class="g-btn form-btn" type="submit" value="Create">
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </form>
+</div>
+
+<% include ./partials/footer %>

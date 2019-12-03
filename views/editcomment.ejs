@@ -1,0 +1,11 @@
+<% include ./partials/header %>
+
+<div class="form-con">
+    <form action="/deals/holiday/<%=deal_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+        <h3>Edit Comment</h3>
+        <input class="text-form acc" type="text" name="comment[text]" placeholder="<%=comment.text%>">
+        <input class="g-btn form-btn" type="submit" value="Edit">
+    </form>
+</div>
+
+<% include ./partials/footer %>

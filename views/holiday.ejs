@@ -1,0 +1,67 @@
+<% include ./partials/header %>
+
+<div class="holidays">
+    <div class="holiday-info">
+        <img class="holiday-img" src="<%=deal.image%>" alt="">
+        <div class="holiday-further">
+            <h4 class="holiday-links">Hotel & Flight</h4>
+            <a class="g-btn holiday-hotel" href="<%=deal.hotel %>" target="_blank"><i class="fas fa-hotel"></i></a>
+            <a class="g-btn holiday-flight" href="<%=deal.flight %>" target="_blank"><i class="fas fa-plane"></i></a>
+        </div>
+    </div>
+
+    <div class="holiday-deal">
+        <h1 class="holiday-loc"><%= deal.location %></h1>
+        <h3 class="holiday-price">£<%= deal. price%></h3>
+        <h3 class="holiday-desc"><%= deal.desc %></h3>
+    </div>
+
+    <h3 class="holiday-nights"><%= deal.nights %> Nights</h3>
+    <h3 class="holiday-date"><i class="far fa-clock"></i> <%= deal.created.toDateString()%></h3>
+</div>
+
+<div class="comments">
+    <div class="comments-banner">
+        <% if (deal.comments.length == 0) { %>
+        <h3>Be the first to leave a comment</h3>
+        <% } else if (deal.comments.length === 1) { %>
+        <h3><i class="fas fa-comment"></i>1 Comment</h3>
+        <% } else { %>
+        <h3><i class="fas fa-comment"></i><%= deal.comments.length %> Comments</h3>
+        <% } %>
+    </div>
+
+    <% deal.comments.forEach((comment) => { %>
+    <div class="comment">
+        <p class="comment-user"><%= comment.author.username %><span
+                class="comment-date"><%= comment.created.toLocaleDateString() %></span></p>
+        <p class="comment-text"><%= comment.text %></p>
+        <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.adminAccess === true) { %>
+        <div class="comment-admin">
+            <form action="/deals/holiday/:id/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                <input class="delete-btn" type="submit" value="Delete">
+            </form>
+            <a class="edit-btn" href="/deals/holiday/<%=deal._id%>/comments/<%=comment._id%>/edit">Edit</a>
+        </div>
+        <% } %>
+        <div class="comment-break"></div>
+    </div>
+    <%})%>
+
+    <form class="comment-form" action="/deals/holiday/<%=deal._id%>/comments" method="POST">
+        <input class="text-form comment-text" type="text" name="comment[text]" placeholder="Leave a comment" required>
+        <input class="g-btn comment-btn" type="submit" value="Submit">
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<% include ./partials/footer %>

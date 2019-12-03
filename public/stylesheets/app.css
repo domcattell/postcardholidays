@@ -1,0 +1,843 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: rgb(240, 240, 240);
+    margin: 0 0 100px;
+}
+
+/* POST CARD */
+
+.postcard-container {
+    margin: 50px auto;
+    width: 515px;
+    height: 315px;
+    perspective: 2000px;
+    
+}
+
+.postcard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    border: 15px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    -webkit-box-shadow: 7px 10px 14px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 7px 10px 14px 0px rgba(0,0,0,0.15);
+    box-shadow: 7px 10px 14px 0px rgba(0,0,0,0.15);
+}
+
+
+.postcard-container:hover .postcard {
+    transform: rotateY(180deg)
+}
+
+.front,
+.back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    
+}
+
+.back {
+    background: white;
+    transform: rotateY(180deg);
+    color: black;
+}
+
+.bg {
+    object-fit: cover;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.location {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-family: 'Pacifico', cursive;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0 black, 0 8px black, 1px 0 black, 0 4px black;
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+.price {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background: rgba(65, 65, 65, .5);
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 25px;
+    transform: rotateZ(20deg);
+}
+
+.date {
+    position: absolute;
+    color: white;
+    text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 14px;
+    bottom: 10px;
+    
+    left: 25px;
+}
+
+.location-back {
+    margin: 10px;
+    font-size: 31px;
+    border-bottom: 2px dotted rgb(146, 146, 146);
+    padding-bottom: 10px;
+}
+
+.desc {
+    margin: 10px;
+    font-size: 14px;
+}
+
+.nights {
+    position: absolute;
+    margin: 10px;
+    bottom: 5px;
+}
+
+/* POST CARD */
+
+/* NAVBAR */
+.navbar {
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 0;
+    padding: 5px 1%;
+    background: white;
+}
+
+        /* TITLE */
+.postcard-brand {
+    color: rgb(142, 218, 98);
+}
+
+.holidays-brand {
+    /* color: rgb(95, 164, 230); */
+    color: rgb(149, 195, 255);
+    padding: 2px 8px ;
+    /* background: rgb(255, 235, 235); */
+    border-radius: 5px;
+}
+
+.postcard-brand, .holidays-brand {
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    text-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+}
+    /* TITLE */ 
+    
+    /* LINKS */
+.link.search {
+    font-size: 20px;
+    color: rgb(65, 65, 65);
+    cursor: pointer;
+    outline: none;
+    margin-left: 10px;
+}
+
+input[type=text], .text-form {
+    outline: none;
+    transition: all 0.45s ease;
+    border: 1px solid rgba(160, 150, 150, .8);
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[text=text]:focus, .text-form:focus {
+    box-shadow: 0 0 6px rgb(142, 218, 98);
+    border: 1px solid rgb(142, 218, 98);
+}
+
+.nav-link {
+    border: none;
+    background: none;
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+    background-size: 200% 100%;
+    background-image: linear-gradient(to left, rgba(142, 218, 98, .2), 50%, rgba(0,0,0,0) 50%);
+    transition: background-position 0.5s;
+    padding: 0;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.nav-link:hover {
+    color: black;
+    background-position: -100% 0;
+}
+
+.g-btn {
+    border: none;
+    background: none;
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+    background-size: 200% 100%;
+    background-image: linear-gradient(to left, rgba(142, 218, 98, .2), 50%, rgba(0,0,0,0) 50%);
+    transition: background-position 0.5s;
+    padding: 0;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.g-btn:hover {
+    color: black;
+    background-position: -100% 0;
+}
+
+.g-btn.login-btn {
+    text-transform: uppercase;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+}
+
+/* .g-btn.create-account {
+    width: 100%;
+    text-align: center;
+} */
+
+.login-form {
+    width: 230px;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.login-divider {
+    background: rgb(212, 212, 212);
+    height: 1px;
+    width: 80%;
+    margin: 15px 0;
+}
+
+.link.social {
+    font-size: 20px;
+    color: rgb(65, 65, 65);
+    
+}
+
+.login-icon {
+    margin-right: 5%;
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    
+}
+
+.login-header {
+    width: 100%;
+    background: rgb(65 ,65, 65);
+    height: 50px;
+    margin-top: -8px;
+    margin-bottom: 20px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+}
+
+    /* LINKS */
+
+.navbar-toggler-icon {
+    color: rgb(65, 65, 65);
+    font-size: 22px;
+    padding: 5px;
+}
+
+.flash {
+    margin-top: 10px;
+}
+
+/* NAVBAR */
+
+/* INDEX */
+.latest-deals {
+    background-image: url("/images/interlaced.png");
+    background-repeat: repeat;
+    width: 90%;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.latest-bg {
+    background: rgba(149, 195, 255, .4);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.latest-bg a {
+    display: inline-block;
+    color: rgb(65, 65, 65);
+    font-family: 'Poppins', sans-serif;
+    font-size: 52px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 3%;
+}
+
+.latest-bg p {
+    padding: 20px 0 0 5%;
+    font-size: 22px;
+}
+
+.featured-deals {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0;
+}
+
+.featured-deals h3 {
+    display: inline-block;
+    color: rgb(65, 65, 65);
+    font-family: 'Poppins', sans-serif;
+    font-size: 52px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.deals-bg {
+    background-image: url("/images/interlaced.png");
+    background-repeat: repeat;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid rgb(230, 230, 230);
+}
+
+.deals-container {
+    display: grid;
+    /* background: rgba(255, 171, 185, 0.3); */
+    grid-template-columns: repeat(auto-fit, minmax(515px, 1fr));
+    grid-auto-rows: 400px;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.featured-deal {
+    align-self: center;
+    justify-self: center;
+}
+/* INDEX */
+
+/* HOLIDAY */
+
+.holiday-info, .holiday-deal, .holiday-nights {
+    color: rgb(65, 65, 65);
+}
+
+.holiday-img {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.holidays {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    background: rgb(255, 255, 255);
+    width: 60%;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid rgb(230, 230, 230);
+}
+
+.holiday-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    grid-column: 1/1;
+    grid-row: 1/1;
+    justify-self: center;
+    align-self: center;
+}
+
+.holiday-links {
+    margin: 5px;
+    font-size: 20px;
+}
+
+.holiday-further {
+    background: rgba(243, 243, 243, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(230, 230, 230);
+}
+
+.holiday-deal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin: 20px 20px 20px 0;
+    grid-column: 2/2;
+    grid-row: 1/1;
+    justify-self: start;
+    align-self: start;
+    
+}
+
+.holiday-nights {
+    grid-column: 1/1;
+    grid-row: 2/2;
+    justify-self: center;
+    align-self: center;
+}
+
+.holiday-date {
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 5px;
+    padding: 5px;
+    width: 95%;
+    margin: 20px 0;
+    font-size: 12px;
+    color: rgb(175, 175, 175);
+    grid-row: 2/2;
+    grid-column: 2/2;
+    justify-self: start;
+}
+
+.holiday-desc {
+    font-size: 16px;
+}
+
+.holiday-loc {
+    border-bottom: 2px solid rgb(230, 230, 230);
+    padding-bottom: 2%;
+}
+
+.g-btn.holiday-hotel, .g-btn.holiday-flight {
+    text-decoration: none;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: rgba(98, 146, 218, 0.8);
+}
+
+
+.comments {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background: rgb(255, 255, 255);
+    width: 60%;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(65, 65, 65);
+}
+
+.comments-banner {
+    width: 100%;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    color: rgb(65, 65, 65);
+    /* background: rgba(142, 218, 98, .3); */
+    background: rgb(65, 65, 65);
+    margin-bottom: 5px;
+}
+
+.comments-banner h3 {
+    padding: 5px 0 5px 15px;
+    margin: 5px;
+    font-size: 18px;
+    color: white;
+}
+
+.comments-banner i {
+    margin-right: 10px;
+    color: white;
+}
+
+.comment {
+    /* border: 1px solid rgb(184, 184, 184); */
+    margin: 5px 15px 0 15px;
+}
+
+.comment-break {
+    width: calc(100%+30px);
+    height: 1px;
+    background: black;
+    margin: 0 -15px;
+    background: rgb(230, 230, 230);
+}
+
+.comment-date {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+    margin-left: 0.5%;
+    color: rgb(134, 134, 134);
+}
+
+.comment-user {
+    font-weight: bold;
+    margin: 0;
+}
+
+.comment-admin {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5px;
+}
+
+.delete-btn{
+    cursor: pointer;
+    outline: none;
+    background: rgb(255, 75, 75);
+    color: white;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    transition: background 0.5s ease;
+}
+
+.edit-btn {
+    text-decoration: none !important;
+    background: rgb(245, 123, 42);
+    color: white;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    transition: background 0.5s ease;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    background: rgb(71, 71, 71);
+    color: white;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 15px;
+    align-self: center;
+}
+
+.text-form.comment-text {
+    width: 95%;
+}
+
+.g-btn.comment-btn {
+    width: 5%;
+    cursor: pointer;
+    outline: none;
+}
+/* HOLIDAY */
+
+/* FORMS */
+.form-con {
+    background: rgb(255, 255, 255);
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(65, 65, 65);
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-con form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+
+.text-form.acc {
+    width: 40%;
+    margin: 5px;
+}
+
+.form-con h1 {
+    margin-bottom: 5%;
+}
+
+.form-btn {
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid rgb(230, 230, 230);
+    width: 40%;
+    margin-top: 1.5%;
+}
+
+.form-con p {
+    margin-top: 15%;
+}
+/* FORMS */
+
+/* SEARCH */
+
+.search-header {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+    padding: 1%;
+    background: rgb(65, 65, 65);
+    color: white;
+}
+
+.search-header h3, p {
+    font-size: 16px;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+}
+
+.mobile-search {
+    display: none;
+}
+
+
+/* SEARCH */
+
+/* FOOTER */
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.2%;
+    /* background: rgba(149, 195, 255, .3);
+    color: rgb(65, 65, 65) */
+    background: rgb(65, 65, 65);
+    color: white;
+}
+
+/* FOOTER */
+
+
+
+
+/* MOBILE */
+@media only screen and (max-width: 570px) {
+    .postcard-container {
+        width: 495px;
+        height: 295px;
+    }
+
+    .postcard {
+        border: 9px solid rgb(255, 255, 255);
+    }
+
+    .latest-bg a {
+        font-size: 26px;
+    }
+
+    .latest-deals {
+        height: 180px;
+        width: 100%;
+    }
+        
+    .latest-bg p {
+        padding: 20px 0 0 3%;
+        font-size: 20px;
+    }
+
+    .featured-deals {
+        margin-bottom: 1%;
+    }
+    .featured-deals h3 {
+        font-size: 26px;
+    }
+
+    .deals-container {
+        grid-auto-rows: 300px;
+        width: 100%;
+    }
+
+    .postcard-container:hover .postcard {
+        transform: rotateY(0deg)
+    }
+
+    .holidays {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: 95%;
+    }
+
+    .holiday-info {
+        margin: 10px;
+        grid-column: 1/1;
+        grid-row: 1/1;
+    }
+    
+    .holiday-deal {
+        align-items: center;
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: center;
+    }
+    
+    .holiday-nights {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    
+    .holiday-date {
+        width: 80%;
+        margin: 0 auto;
+        grid-row: 2/2;
+        grid-column: 1/1;
+    }
+    
+    .holiday-desc {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .holiday-img {
+        width: 340px;
+    }
+
+    .back {
+        display: none;
+    }
+
+    .comments {
+        width: 95%;
+    }
+    
+    .text-form.comment-text {
+        width: 85%;
+    }
+
+    .g-btn.comment-btn {
+        width: 15%;
+    }
+
+    .form-con {
+        width: 95%;
+    }
+
+    .text-form.acc {
+        width: 80%;
+        margin: 1.5%;
+    }
+
+    .deals-bg {
+        width: 100%;
+    }
+
+    .mobile-search {
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+    }
+
+    .mobile-search form {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+    }
+
+    .mobile-search input {
+        width: 100%;
+    }
+
+    .mobile-search button {
+        border: none;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        width: 10%;
+    }
+
+    .price {
+        top: 15px;
+        right: 15px;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .postcard-container {
+        width: calc(495px - 120px);
+        height: calc(295px - 60px);
+    }
+    
+}
+
+@media only screen and (max-width: 320px) {
+    .postcard-container {
+        width: calc(495px - 180px);
+        height: calc(295px - 100px);
+    }
+
+    .holiday-img {
+        width: 300px;
+    }
+}
+/* MOBILE */

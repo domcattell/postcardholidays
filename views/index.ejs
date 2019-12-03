@@ -1,0 +1,50 @@
+<% include ./partials/header %>
+
+<div class="mobile-search mobile-view">
+    <form action="/deals" method="GET">
+        <input class="text-form" type="text" name="search" placeholder="Search">
+        <button><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<div class="latest-deals">
+    <div class="latest-bg">
+        <h3><a href="deals/all">View every holiday deal we've got</a></h3>
+        <p>Browse all the current holidays</p>
+    </div>
+</div>
+
+<div class="featured-deals" id="latest-deals">
+    <h3>Featured Deals</h3>
+</div>
+
+<div class="deals-bg">
+    <div class="deals-container">
+        <% for (var i = 0; i < 6; i++) { %>
+        <div class="featured-deal">
+            <div class="postcard-container">
+
+                <a class="" href="/deals/holiday/<%=deals[i]._id%>">
+                    <div class="postcard">
+                        <div class="front">
+                            <img class="img-fluid bg" src="<%=deals[i].image%>" alt="">
+                            <h1 class="location"><%= deals[i].location %></h1>
+                            <h3 class="price">£<%= deals[i].price%></h3>
+                            <h3 class="date">Posted <%= deals[i].created.toDateString()%></h3>
+                        </div>
+
+                        <div class="back">
+                            <h1 class="location-back"><%= deals[i].location %></h1>
+                            <h3 class="desc"><%= deals[i].desc %></h3>
+                            <h3 class="nights">Nights: <%= deals[i].nights %></h3>
+                        </div>
+                    </div>
+            </div>
+
+            </a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<% include ./partials/footer %>

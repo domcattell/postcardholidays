@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Poppins|Roboto:400,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6ccbcbdf92.js" crossorigin="anonymous"></script>
+    <title>PostCard Holidays</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+
+        <a class="navbar-brand" href="/deals"><span class="postcard-brand">Postcard</span> <span
+                class="holidays-brand">Holidays</span></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon fas fa-bars"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link link" href="/deals/all">All Deals</a>
+                <a class="nav-item nav-link link" href="#latest-deals">Featured</a>
+
+                <% if(!currentUser) {%>
+                <a class="nav-item nav-link link mobile-view" href="/login">Login</a>
+                <a class="nav-item nav-link link mobile-view" href="/register">Register</a>
+                <div class="btn-group desk-view">
+                    <a class="nav-item nav-link dropdown-toggle" id="dropdown-btn" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </a>
+                    <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                        <form action="/login" method="POST" class="login-form">
+
+                            <label class="login-header" for=""><i
+                                    class="fas fa-user-circle login-icon"></i>Login</label>
+
+                            <div class="form-group">
+                                <input class="text-form" type="text" name="username" placeholder="Username">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="text-form" type="password" name="password" placeholder="Password">
+                            </div>
+
+                            <button type="submit" class="g-btn login-btn">Sign in</button>
+                            <div class="login-divider"></div>
+                            <a class="dropdown-item g-btn login-btn" href="/register">Create account</a>
+                        </form>
+
+                    </div>
+                </div>
+                <% } else { %>
+                <a class="nav-item nav-link link" href="#">Signed in as <%=currentUser.username%></a>
+                <a class="nav-item nav-link link" href="/logout">Logout</a>
+                <% } %>
+
+                <% if (currentUser && currentUser.adminAccess === true) { %>
+                <a class="nav-item nav-link link-rs mr-auto" href="/deals/create">Create Deal</a>
+                <% } %>
+            </div>
+
+            <div class="navbar-nav ml-auto">
+                <form class="form-inline desk-view" action="/deals" method="GET">
+                    <input class="text-form" type="text" name="search" placeholder="Search">
+                    <button class="nav-item nav-link link search"><i class="fas fa-search"></i></button>
+                </form>
+                <a class="nav-item nav-link link social desk-view" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="nav-item nav-link link social desk-view" href="#"><i class="fab fa-facebook-square"></i></a>
+                <a class="nav-item nav-link link social desk-view" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container flash">
+        <% if (error && error.length > 0) {%>
+        <div class="alert alert-danger" role="alert"><%= error %></div>
+        <% } %>
+    </div>
